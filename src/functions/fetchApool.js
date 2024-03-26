@@ -15,7 +15,7 @@ async function getPokemonInfo({ id, shiny }) {
   const res = await fetch(url);
   const { name, sprites } = await res.json();
   const img = sprites[shiny ? "front_shiny" : "front_default"];
-  return { name, img };
+  return { name, img, id };
 }
 
 async function fetchApool({ poolSize, setLoaded }) {
