@@ -1,0 +1,23 @@
+.card {
+  height: 250px;
+  width: 180px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+
+  cursor: pointer;
+}
+
+.card-img {
+  height: 200px;
+  width: 100%;
+  object-fit: contain;
+}
+
+.card-name {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 800;
+  max-width: 100%;
+  text-transform: capitalize;
+  padding: 8px 6px;
+}
