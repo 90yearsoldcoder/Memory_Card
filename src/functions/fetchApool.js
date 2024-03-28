@@ -1,6 +1,6 @@
 import { APIsetting } from "../settings/APIsetting";
 
-function uniqueRandomNumbers(k, N) {
+export function uniqueRandomNumbers(k, N) {
   let nums = new Set();
   while (nums.size < k) {
     let num = Math.floor(Math.random() * N) + 1;
@@ -18,7 +18,7 @@ async function getPokemonInfo({ id, shiny }) {
   return { name, img, id };
 }
 
-async function fetchApool({ poolSize, setLoaded }) {
+export async function fetchApool({ poolSize, setLoaded }) {
   const randomIntArray = uniqueRandomNumbers(poolSize, APIsetting.MAXID);
   const poolList = [];
 
@@ -36,5 +36,3 @@ async function fetchApool({ poolSize, setLoaded }) {
 
   return responses;
 }
-
-export default fetchApool;
