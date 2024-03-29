@@ -1,24 +1,35 @@
-import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Card from "./card";
+import "../styles/round.css";
 
-const Round = ({ pokemonPool, drawPoke }) => {
-  const [selectedOne, setSelectedOne] = useState(-1);
-
-  useEffect(() => {
-    console.log(`Selected ${selectedOne}, lets shuffle and draw the cards`);
-  }, [selectedOne]);
+const Round = ({
+  pokemonPool,
+  drawPoke,
+  selectedPool,
+  setselectedPool,
+  setPage,
+}) => {
+  function handleCardClick(pokeId) {
+    console.log(`${pokeId} is clicked`);
+    if (selectedPool.includes(pokeId)) {
+      console.log("Game is over.");
+      setPage("GameOver");
+    } else {
+      setselectedPool([...selectedPool, pokeId]);
+      drawPoke();
+    }
+  }
 
   //drawPoke is the pokemonPool setter
   return (
-    <div>
+    <div className="round-container">
       {pokemonPool.map((pokemon) => (
         <Card
           key={pokemon.id}
           pokeId={pokemon.id}
           pokeName={pokemon.name}
           pokeImg={pokemon.img}
-          selectedOneSetter={setSelectedOne}
+          handleCardClick={handleCardClick}
         ></Card>
       ))}
     </div>
@@ -28,6 +39,9 @@ const Round = ({ pokemonPool, drawPoke }) => {
 Round.propTypes = {
   pokemonPool: PropTypes.array.isRequired,
   drawPoke: PropTypes.func.isRequired,
+  selectedPool: PropTypes.array.isRequired,
+  setselectedPool: PropTypes.func.isRequired,
+  setPage: PropTypes.func.isRequired,
 };
 
 export default Round;
