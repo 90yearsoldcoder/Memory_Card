@@ -1,35 +1,66 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { fetchApool } from "./functions/fetchApool";
+import Welcome from "./components/welcome";
+import Game from "./components/game";
+import GameOver from "./components/gameOver";
+import { useState, useEffect } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [page, setPage] = useState("Game");
+  const [gamePool, setGamePool] = useState([]);
+  const [poolSize, setPoolSize] = useState(50);
+  const [fetchedAPI, setfetchedAPI] = useState(0);
+  //numPokePerRound is the number of cards per round
+  const [numPokePerRound, setnumPokePerRound] = useState(6);
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+  useEffect(() => {
+    let isMounted = true; // Flag to track mounted state
+    fetchApool({
+      poolSize: poolSize,
+      setLoaded: (value) => {
+        if (isMounted) setfetchedAPI(value);
+      },
+    }).then((responses) => {
+      //console.log(responses);
+      setGamePool(responses);
+    });
+    return () => {
+      isMounted = false; // Component is unmounting, ignore pending updates
+      setfetchedAPI(0);
+    };
+  }, [poolSize]);
+
+  if (poolSize != fetchedAPI)
+    return (
+      <>
+        <div>Loading</div>
+        <div>poolSize: {poolSize}</div>
+        <div>fetched Pokemon: {fetchedAPI}</div>
+      </>
+    );
+  else if (page === "Welcome")
+    return (
+      <>
+        <Welcome></Welcome>
+      </>
+    );
+  else if (page === "Game")
+    return (
+      <>
+        <Game
+          gamePool={gamePool}
+          poolSize={poolSize}
+          numPokePerRound={numPokePerRound}
+          setPage={setPage}
+        ></Game>
+      </>
+    );
+  else if (page === "GameOver")
+    return (
+      <>
+        <GameOver></GameOver>
+      </>
+    );
 }
 
-export default App
+export default App;
