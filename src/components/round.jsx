@@ -13,6 +13,7 @@ const Round = ({
     console.log(`${pokeId} is clicked`);
     if (selectedPool.includes(pokeId)) {
       console.log("Game is over.");
+      setselectedPool([]);
       setPage("GameOver");
     } else {
       setselectedPool([...selectedPool, pokeId]);

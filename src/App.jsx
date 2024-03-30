@@ -4,14 +4,17 @@ import Welcome from "./components/welcome";
 import Game from "./components/game";
 import GameOver from "./components/gameOver";
 import { useState, useEffect } from "react";
+import { gameSettings } from "./settings/gameSettings";
 
 function App() {
-  const [page, setPage] = useState("Game");
+  const [page, setPage] = useState("Welcome");
   const [gamePool, setGamePool] = useState([]);
-  const [poolSize, setPoolSize] = useState(50);
+  const [poolSize, setPoolSize] = useState(gameSettings["poolSize"]["Medium"]);
   const [fetchedAPI, setfetchedAPI] = useState(0);
   //numPokePerRound is the number of cards per round
-  const [numPokePerRound, setnumPokePerRound] = useState(6);
+  const [numPokePerRound, setnumPokePerRound] = useState(
+    gameSettings["pokePerRound"]["Medium"]
+  );
 
   useEffect(() => {
     let isMounted = true; // Flag to track mounted state
@@ -41,7 +44,11 @@ function App() {
   else if (page === "Welcome")
     return (
       <>
-        <Welcome></Welcome>
+        <Welcome
+          setPage={setPage}
+          setPoolSize={setPoolSize}
+          setnumPokePerRound={setnumPokePerRound}
+        ></Welcome>
       </>
     );
   else if (page === "Game")
@@ -58,7 +65,7 @@ function App() {
   else if (page === "GameOver")
     return (
       <>
-        <GameOver></GameOver>
+        <GameOver setPage={setPage}></GameOver>
       </>
     );
 }
