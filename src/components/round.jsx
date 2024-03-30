@@ -11,7 +11,7 @@ const Round = ({ pokemonPool, handleCardClick }) => {
           pokeId={pokemon.id}
           pokeName={pokemon.name}
           pokeImg={pokemon.img}
-          handleCardClick={handleCardClick(pokemon.id)}
+          handleCardClick={handleCardClick}
         ></Card>
       ))}
     </div>
