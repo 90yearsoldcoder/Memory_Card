@@ -2,26 +2,7 @@ import PropTypes from "prop-types";
 import Card from "./card";
 import "../styles/round.css";
 
-const Round = ({
-  pokemonPool,
-  drawPoke,
-  selectedPool,
-  setselectedPool,
-  setPage,
-}) => {
-  function handleCardClick(pokeId) {
-    console.log(`${pokeId} is clicked`);
-    if (selectedPool.includes(pokeId)) {
-      console.log("Game is over.");
-      setselectedPool([]);
-      setPage("GameOver");
-    } else {
-      setselectedPool([...selectedPool, pokeId]);
-      drawPoke();
-    }
-  }
-
-  //drawPoke is the pokemonPool setter
+const Round = ({ pokemonPool, handleCardClick }) => {
   return (
     <div className="round-container">
       {pokemonPool.map((pokemon) => (
@@ -30,7 +11,7 @@ const Round = ({
           pokeId={pokemon.id}
           pokeName={pokemon.name}
           pokeImg={pokemon.img}
-          handleCardClick={handleCardClick}
+          handleCardClick={handleCardClick(pokemon.id)}
         ></Card>
       ))}
     </div>
@@ -39,10 +20,7 @@ const Round = ({
 
 Round.propTypes = {
   pokemonPool: PropTypes.array.isRequired,
-  drawPoke: PropTypes.func.isRequired,
-  selectedPool: PropTypes.array.isRequired,
-  setselectedPool: PropTypes.func.isRequired,
-  setPage: PropTypes.func.isRequired,
+  handleCardClick: PropTypes.func.isRequired,
 };
 
 export default Round;
