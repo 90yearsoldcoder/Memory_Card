@@ -25,7 +25,6 @@ const Game = ({ gamePool, poolSize, numPokePerRound, setScore, setPage }) => {
 
   function handleCardClick(pokeId) {
     console.log(`${pokeId} is clicked`);
-    setScore(selectedPool.length);
     if (selectedPool.includes(pokeId)) {
       console.log("Game is over.");
       setselectedPool([]);
@@ -35,6 +34,10 @@ const Game = ({ gamePool, poolSize, numPokePerRound, setScore, setPage }) => {
       drawPoke();
     }
   }
+
+  useEffect(() => {
+    setScore(selectedPool.length);
+  }, [selectedPool]);
 
   useEffect(() => {
     drawPoke();
