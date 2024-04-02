@@ -7,6 +7,7 @@ import ScoreBoard from "./components/scoreBoard";
 import { useState, useEffect } from "react";
 import { gameSettings } from "./settings/gameSettings";
 import icon from "./assets/psyduck_icon.jpg";
+import Loading from "./components/Loading";
 
 function getOrDefault(key, defaultValue) {
   const value = parseInt(localStorage.getItem(key));
@@ -75,8 +76,7 @@ function App() {
         <div className="Modal">
           <div className="app">
             <div>Loading</div>
-            <div>poolSize: {poolSize}</div>
-            <div>fetched Pokemon: {fetchedAPI}</div>
+            <Loading poolSize={poolSize} fetchedAPI={fetchedAPI}></Loading>
           </div>
         </div>
       </>
