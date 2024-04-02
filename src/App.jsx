@@ -74,6 +74,7 @@ function App() {
           <div className="app">
             <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
             <Welcome
+              poolSize={poolSize}
               setPage={setPage}
               setPoolSize={setPoolSize}
               setnumPokePerRound={setnumPokePerRound}

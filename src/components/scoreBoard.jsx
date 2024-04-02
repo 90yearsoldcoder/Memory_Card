@@ -1,10 +1,15 @@
 import PropTypes from "prop-types";
+import "../styles/scoreBoard.css";
 
 const ScoreBoard = ({ score, highestScore }) => {
   return (
     <>
-      <p>Score: {score}</p>
-      <p>Highest Score: {highestScore}</p>
+      <div className="score-container">
+        <div>
+          Score: <span style={{ fontWeight: "bold" }}>{score}</span>{" "}
+        </div>
+        <div>Highest Score: {highestScore}</div>
+      </div>
     </>
   );
 };

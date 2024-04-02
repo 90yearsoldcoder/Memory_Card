@@ -1,0 +1,12 @@
+.score-container {
+  display: flex;
+  flex-direction: row;
+  border-radius: 5px;
+  padding: 5px 7px 5px 7px;
+  max-width: 500px;
+  gap: 2rem;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  font-size: 1.5rem;
+}

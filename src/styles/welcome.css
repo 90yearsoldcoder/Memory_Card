@@ -1,0 +1,29 @@
+.welcome-container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--main-background-color);
+  border-radius: 5px;
+  gap: 1rem;
+
+  padding: 1rem;
+}
+
+div.title {
+  font-size: 2rem;
+  margin: 0.4rem, 0;
+}
+
+.diff-select-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  min-width: 450px;
+}
+
+.diff-button {
+}
+
+.btnSelected {
+  background-color: #7da2ad;
+}

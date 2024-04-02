@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import { gameSettings } from "../settings/gameSettings";
 import "../styles/welcome.css";
-import { useState } from "react";
 
 const Welcome = ({ poolSize, setPage, setPoolSize, setnumPokePerRound }) => {
   function handleDiffClick(e) {
