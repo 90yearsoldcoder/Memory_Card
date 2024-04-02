@@ -58,40 +58,54 @@ function App() {
   if (poolSize != fetchedAPI)
     return (
       <>
-        <div>Loading</div>
-        <div>poolSize: {poolSize}</div>
-        <div>fetched Pokemon: {fetchedAPI}</div>
+        <div className="Modal">
+          <div className="app">
+            <div>Loading</div>
+            <div>poolSize: {poolSize}</div>
+            <div>fetched Pokemon: {fetchedAPI}</div>
+          </div>
+        </div>
       </>
     );
   else if (page === "Welcome")
     return (
       <>
-        <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
-        <Welcome
-          setPage={setPage}
-          setPoolSize={setPoolSize}
-          setnumPokePerRound={setnumPokePerRound}
-        ></Welcome>
+        <div className="Modal">
+          <div className="app">
+            <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
+            <Welcome
+              setPage={setPage}
+              setPoolSize={setPoolSize}
+              setnumPokePerRound={setnumPokePerRound}
+            ></Welcome>
+          </div>
+        </div>
       </>
     );
   else if (page === "Game")
     return (
       <>
-        <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
-        <Game
-          gamePool={gamePool}
-          poolSize={poolSize}
-          numPokePerRound={numPokePerRound}
-          setScore={setScore}
-          setPage={setPage}
-        ></Game>
+        <div className="app">
+          <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
+          <Game
+            gamePool={gamePool}
+            poolSize={poolSize}
+            numPokePerRound={numPokePerRound}
+            setScore={setScore}
+            setPage={setPage}
+          ></Game>
+        </div>
       </>
     );
   else if (page === "GameOver")
     return (
       <>
-        <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
-        <GameOver setPage={setPage}></GameOver>
+        <div className="Modal">
+          <div className="app">
+            <ScoreBoard score={score} highestScore={highestScore}></ScoreBoard>
+            <GameOver setPage={setPage}></GameOver>
+          </div>
+        </div>
       </>
     );
 }

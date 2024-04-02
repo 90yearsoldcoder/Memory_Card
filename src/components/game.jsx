@@ -37,7 +37,7 @@ const Game = ({ gamePool, poolSize, numPokePerRound, setScore, setPage }) => {
 
   useEffect(() => {
     setScore(selectedPool.length);
-  }, [selectedPool]);
+  }, [selectedPool, setScore]);
 
   useEffect(() => {
     drawPoke();
