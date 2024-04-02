@@ -6,6 +6,7 @@ import GameOver from "./components/gameOver";
 import ScoreBoard from "./components/scoreBoard";
 import { useState, useEffect } from "react";
 import { gameSettings } from "./settings/gameSettings";
+import icon from "./assets/psyduck_icon.jpg";
 
 function getOrDefault(key, defaultValue) {
   const value = parseInt(localStorage.getItem(key));
@@ -13,6 +14,19 @@ function getOrDefault(key, defaultValue) {
 }
 
 function App() {
+  //remove the head text
+  useEffect(() => {
+    document.title = "Memory Card";
+  }, []);
+
+  //remove the original icon
+  useEffect(() => {
+    const link = document.querySelector("link[rel~='icon']");
+    if (link) {
+      link.href = icon;
+    }
+  }, []);
+
   const [page, setPage] = useState("Welcome");
   const [gamePool, setGamePool] = useState([]);
   const [poolSize, setPoolSize] = useState(gameSettings["poolSize"]["Medium"]);
