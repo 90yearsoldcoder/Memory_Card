@@ -1,24 +1,23 @@
 import PropTypes from "prop-types";
 import { gameSettings } from "../settings/gameSettings";
 import "../styles/welcome.css";
+import { useState } from "react";
 
-const Welcome = ({ poolSize, setPage, setPoolSize, setnumPokePerRound }) => {
+const Welcome = ({ setPage, setPoolSize, setnumPokePerRound }) => {
+  const [selectedDiff, setSeletctedDiff] = useState("Medium");
+
   function handleDiffClick(e) {
-    //console.log("button clicked " + e.target.id);
-    setPoolSize(gameSettings["poolSize"][e.target.id]);
-    setnumPokePerRound(gameSettings["pokePerRound"][e.target.id]);
+    setSeletctedDiff(e.target.id);
   }
   function handleStartClick() {
+    setPoolSize(gameSettings["poolSize"][selectedDiff]);
+    setnumPokePerRound(gameSettings["pokePerRound"][selectedDiff]);
     setPage("Game");
   }
   function ButtonStyle(ind) {
     //console.log(ind);
-    //console.log(buttonSelected);
-    let diff = "Medium";
-    for (let key of Object.keys(gameSettings["poolSize"]))
-      if (poolSize == gameSettings["poolSize"][key]) diff = key;
-
-    if (ind === diff) return "diff-button btnSelected";
+    //console.log(selectedDiff);
+    if (ind === selectedDiff) return "diff-button btnSelected";
     return "diff-button";
   }
 
@@ -56,7 +55,6 @@ const Welcome = ({ poolSize, setPage, setPoolSize, setnumPokePerRound }) => {
 };
 
 Welcome.propTypes = {
-  poolSize: PropTypes.number.isRequired,
   setPage: PropTypes.func.isRequired,
   setPoolSize: PropTypes.func.isRequired,
   setnumPokePerRound: PropTypes.func.isRequired,
