@@ -12,5 +12,5 @@ npm run build
 
 # Preview
 
-[Live Preview](memorycardminty.netlify.app)
+[Live Preview](https://memorycardminty.netlify.app)
 ![alt text](image.png)
