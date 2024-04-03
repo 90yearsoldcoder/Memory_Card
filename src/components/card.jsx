@@ -1,12 +1,15 @@
 import PropTypes from "prop-types";
 import "../styles/card.css";
+import Tilt from "react-parallax-tilt";
 
 const Card = ({ pokeId, pokeName, pokeImg, handleCardClick }) => {
   return (
-    <div className="card" onClick={() => handleCardClick(pokeId)}>
-      <img src={pokeImg} alt={pokeName} className="card-img" />
-      <p className="card-name">{pokeName}</p>
-    </div>
+    <Tilt>
+      <div className="card" onClick={() => handleCardClick(pokeId)}>
+        <img src={pokeImg} alt={pokeName} className="card-img" />
+        <p className="card-name">{pokeName}</p>
+      </div>
+    </Tilt>
   );
 };
 

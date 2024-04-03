@@ -24,7 +24,7 @@ const Welcome = ({ setPage, setPoolSize, setnumPokePerRound }) => {
   return (
     <div className="welcome-container">
       <div className="title">Welcome</div>
-      <div>Don't click the same card twice</div>
+      <div>Do not click the same card twice</div>
       <div className="diff-select-container">
         <button
           className={ButtonStyle("Easy")}
