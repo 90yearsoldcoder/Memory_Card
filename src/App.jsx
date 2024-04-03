@@ -11,7 +11,8 @@ import Loading from "./components/Loading";
 
 function getOrDefault(key, defaultValue) {
   const value = parseInt(localStorage.getItem(key));
-  return value !== null ? value : defaultValue;
+  if (typeof value == Number) return value;
+  return defaultValue;
 }
 
 function App() {
