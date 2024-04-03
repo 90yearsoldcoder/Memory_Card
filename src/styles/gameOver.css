@@ -1,0 +1,17 @@
+.gameOver-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.gameOver-container p {
+  color: white;
+  font-size: 2rem;
+  font-weight: 900;
+}
+
+.GameOver-button {
+  width: 100%;
+}
